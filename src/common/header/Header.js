@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
-
+import PropTypes from 'prop-types';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 const customStylesForModal={
     content:{
@@ -31,13 +32,20 @@ const TabContainer=function(props){
     );
 }
 
+// PropTypes which is used for checking required values are displaying or not
+TabContainer.prototype={
+    children:PropTypes.node.isRequired
+}
+
 class Header extends Component {
 
     constructor(){
         super();
         this.state={
             modalIsOpen:false,
-            value:0
+            value:0,
+            userNameRequired:"dispNone",
+            username:""
         };
     }
 
@@ -51,6 +59,14 @@ class Header extends Component {
     tabChangeHandler=(event,value)=>{
             this.setState({value})
     }
+
+    loginClickHandler=()=>{
+        this.state.username === "" ? this.setState({userNameRequired:"dispBlock"}) :this.setState({userNameRequired:"dispNone"});
+    }
+    inputUserNameChangeHandler=(e)=>{
+            this.setState({userName:e.target.value})
+    }
+
     render() {
         return (
             <div>
@@ -69,12 +85,17 @@ class Header extends Component {
                         <Tab label="Login"/>
                         <Tab label="Register"/>
                     </Tabs>
+                    { this.state.value === 0 &&
                     <TabContainer>
                         {/* props.children is used to render that what is present inside the tabcontainer closing and opening tags
                         will render to the browser */}
                         <FormControl required>
                             <InputLabel htmlFor="username">UserName </InputLabel>
-                            <Input id="username" type="text"/>
+                            <Input id="username" type="text" userName={this.state.username} onChange={this.inputUserNameChangeHandler}/>
+                            
+                                <FormHelperText className={this.state.userNameRequired}>
+                                    <span className="red">Required</span>
+                                 </FormHelperText>
                         </FormControl>
                             <br/><br/>
                         <FormControl>
@@ -83,8 +104,9 @@ class Header extends Component {
                         </FormControl>
                         <br/>
                         <br/>
-                        <Button variant="contained" color="primary">LOGIN</Button>
+                        <Button variant="contained" color="primary" onClick={this.loginClickHandler}>LOGIN</Button>
                     </TabContainer>
+                    }
                 </Modal>
             </div>
         )

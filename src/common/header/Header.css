@@ -18,11 +18,15 @@
     from { transform: scaleX(-1); }
  }
 
-
- .login-label{
-     margin-top: 1.5em;
- }
-
+.dispNone{
+    display: none;
+}
+.dispBlock{
+    display: block;
+}
  .tabs{
     margin-bottom:20px;
+ }
+ .red{
+     color:red;
  }
