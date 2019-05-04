@@ -17,3 +17,12 @@
  @keyframes app-logo-spin {
     from { transform: scaleX(-1); }
  }
+
+
+ .login-label{
+     margin-top: 1.5em;
+ }
+
+ .tabs{
+    margin-bottom:20px;
+ }

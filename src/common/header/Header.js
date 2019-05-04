@@ -25,7 +25,7 @@ const customStylesForModal={
 
 const TabContainer=function(props){
     return(
-        <Typography component="div" style={{padding:0}}>
+        <Typography component="div" style={{padding:0, textAlign:"center"}}>
             {props.children}
         </Typography>
     );
@@ -65,20 +65,25 @@ class Header extends Component {
                 <Modal ariaHideApp={false} isOpen={this.state.modalIsOpen}
                      contentLabel="Login" onRequestClose={this.closeModalHandler}
                         style={customStylesForModal}>
-                    <Tabs value={this.state.value} onChange={this.tabChangeHandler} >
+                    <Tabs value={this.state.value} className="tabs" onChange={this.tabChangeHandler} >
                         <Tab label="Login"/>
                         <Tab label="Register"/>
                     </Tabs>
                     <TabContainer>
+                        {/* props.children is used to render that what is present inside the tabcontainer closing and opening tags
+                        will render to the browser */}
                         <FormControl required>
                             <InputLabel htmlFor="username">UserName </InputLabel>
                             <Input id="username" type="text"/>
-                            </FormControl>
-                            
-                            <FormControl>
+                        </FormControl>
+                            <br/><br/>
+                        <FormControl>
                             <InputLabel htmlFor="password">Password </InputLabel>
                             <Input id="password" type="password"/>
                         </FormControl>
+                        <br/>
+                        <br/>
+                        <Button variant="contained" color="primary">LOGIN</Button>
                     </TabContainer>
                 </Modal>
             </div>
