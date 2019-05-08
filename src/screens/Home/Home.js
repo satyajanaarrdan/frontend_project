@@ -7,7 +7,6 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Card from '@material-ui/core/Card';
-import CardComponent from '@material-ui/core/CardContent';
 import CardContent from '@material-ui/core/CardContent';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography';
@@ -133,7 +132,7 @@ class Home extends Component {
                                 <FormControl className={classes.formControl}>
                                     <InputLabel htmlFor="select-multiple-checkbox">Genre</InputLabel>
                                     <Select multiple Input={<Input id="select-multiple-checkbox"/>}
-                                     input={<Input id="select-multiple-checkbox-genre" />}
+                                    //  input={<Input id="select-multiple-checkbox-genre" />}
                                     renderValue={select=>select.join(',')}
                                     value={this.state.genres}
                                     onChange={this.genreSelectHandler}>
