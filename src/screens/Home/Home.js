@@ -22,7 +22,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ReactDOM from 'react-dom';
 import Details from '../details/details';
-
+import BookShow from '../../screens/bookshow/bookshow';
 
 const styles = theme => ({
     root: {
